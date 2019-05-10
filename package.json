@@ -1,0 +1,24 @@
+{
+  "name": "traffic-counter-api",
+  "version": "1.0.0",
+  "description": "A REST API that handles automated traffic counter data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoRodriguez2018/traffic-counter-API.git"
+  },
+  "keywords": [
+    "API",
+    "traffic",
+    "counter."
+  ],
+  "author": "Diego Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiegoRodriguez2018/traffic-counter-API/issues"
+  },
+  "homepage": "https://github.com/DiegoRodriguez2018/traffic-counter-API#readme"
+}
