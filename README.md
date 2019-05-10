@@ -15,4 +15,8 @@ As required in the specifications, this project will consist of two REST APIs. T
 `npm start` to start nodemon server. 
 
 ### Testing JS
-`npm test` Run unit tests against any `.spec.js` files
+* Test Framework: Mocha v6.1.4
+* Assertion Library: Chai v4.2.0
+
+To run tests:
+`npm test`
