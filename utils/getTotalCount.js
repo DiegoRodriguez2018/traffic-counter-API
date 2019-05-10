@@ -3,8 +3,8 @@
      * @param {Object} data - An object with the record timestamp as key and car count as value.  
     * @returns {Integer} Returns the total count of cars recorded in the data object. */
 
-function getTotalCount(){
-
+function getTotalCount(data){
+  return 0;
 }
 
 module.exports = getTotalCount;
