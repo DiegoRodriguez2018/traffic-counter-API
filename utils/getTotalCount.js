@@ -4,7 +4,8 @@
     * @returns {Integer} Returns the total count of cars recorded in the data object. */
 
 function getTotalCount(data){
-  return 0;
+  const values = Object.values(data);
+  return values.reduce((accumulator, current)=> accumulator + current);
 }
 
 module.exports = getTotalCount;

@@ -19,6 +19,8 @@ As required in the specifications, this project will consist of two REST APIs. T
 `npm start` to start nodemon server. 
 
 ### Testing JS
+During the development process Test Driven Development (TDD) techniques were implemented as much as possible.Tests were written before functionalities, and used as a base to develop and refactor core components.
+
 * Test Framework: Mocha v6.1.4
 * Assertion Library: Chai v4.2.0
 
