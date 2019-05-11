@@ -15,7 +15,7 @@ function getCountPerDay(data) {
   })
 
   const entries = Object.entries(result);
-  return entries.map(entry=> `${entry[0]} ${entry[1]}`)
+  return entries.map(([timestamp, count]) => `${timestamp} ${count}`);
 }
 
 module.exports = getCountPerDay;
