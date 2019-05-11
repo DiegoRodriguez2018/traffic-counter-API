@@ -83,9 +83,9 @@ describe('utils/getTop3.js', function() {
       };
 
       const expectedOutput = [
-        '2016-12-01T15:30:00 10',
-        '2016-12-08T18:00:00 15',
         '2016-12-08T22:00:00 20',
+        '2016-12-08T18:00:00 15',
+        '2016-12-01T15:30:00 10'
       ]
       
       assert.deepEqual(utils.getTop3(data), expectedOutput);
