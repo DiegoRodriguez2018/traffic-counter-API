@@ -4,7 +4,7 @@
   "description": "A REST API that handles automated traffic counter data.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/DiegoRodriguez2018/traffic-counter-API#readme",
   "dependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
   }
 }

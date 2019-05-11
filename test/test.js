@@ -119,7 +119,7 @@ describe('utils/getTop3.js', function() {
         '2016-12-05T15:30:00': 5,
       };
 
-      const expectedOutput = ['2016-12-01T05:00:00 6',  '2016-12-01T08:00:00 6'];
+      const expectedOutput = ['2016-12-01T05:00:00 6',  '2016-12-01T07:00:00 6'];
 
       assert.deepEqual(utils.get90MinutesWithLessRecords(data), expectedOutput);
     });
