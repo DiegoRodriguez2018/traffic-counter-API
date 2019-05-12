@@ -1,5 +1,4 @@
 const assert = require('chai').assert;
-
 const utils = require('../utils/utils.js');
 
 describe('utils/readFile.js', function() {

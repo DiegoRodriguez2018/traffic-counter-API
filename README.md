@@ -35,3 +35,27 @@ To run tests:
 `npm test`
 
 If you are going to modify or add functionalities to this project remember to run `npm test` to double check they are still being passed. 
+
+### JSON Style Guide
+For this project the [Google JSON Style Guide](https://google.github.io/styleguide/jsoncstyleguide.xml) 
+was used as reference. 
+
+Under this style guide a success response returns a data object, eg. 
+```JSON 
+{
+  "data": {
+    "id": 7035,
+    "name": "Ford"
+  }
+}
+```
+
+On the other hand, an Error response only returns an error object, eg.
+```JSON 
+{
+  "error": {
+    "code": 403,
+    "message": "Forbidden"
+  }
+}
+```

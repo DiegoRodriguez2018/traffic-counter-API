@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 8080;
 
 // Instantiating express.json()
 app.use(express.json());
@@ -11,3 +11,6 @@ app.use(require("./controllers"));
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
+
+// Exporting app so is accessible to Chai during testing.
+module.exports = app;
