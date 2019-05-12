@@ -12,11 +12,18 @@ As required in the specifications, this project will consist of two REST APIs. T
 * NodeJS = v8.10.0
 * NPM = v6.8.0
 
+## How to use
 ### Installation
 `npm install`
 
 ### Quick start
-`npm start` to start nodemon server. 
+`npm start` to start express server, with /index.js as an entry point.  
+
+## Development
+If you would like to contribute to this project the following section will be useful.
+
+### Quick start
+`npm run dev` starts express server with nodemon, tracking files and restarting the server if there is any changes.  
 
 ### Testing JS
 During the development process Test Driven Development (TDD) techniques were implemented as much as possible.Tests were written before functionalities, and used as a base to develop and refactor core components.
@@ -26,3 +33,5 @@ During the development process Test Driven Development (TDD) techniques were imp
 
 To run tests:
 `npm test`
+
+If you are going to modify or add functionalities to this project remember to run `npm test` to double check they are still being passed. 
