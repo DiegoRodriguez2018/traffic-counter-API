@@ -6,7 +6,7 @@ const port = 8080;
 app.use(express.json());
 
 // Importing the controllers folder.
-app.use(require("./controllers"));
+app.use(require("./routes"));
 
 app.listen(port, () => {
   console.log(`listening on ${port}`);
