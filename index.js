@@ -11,3 +11,6 @@ app.use(require("./controllers"));
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
+
+// Exporting app so is accessible to Chai during testing.
+module.exports = app;
