@@ -1,7 +1,7 @@
 /**
- * Checks if two dates constitute a 30-minute consecutive period or not. 
- * @param {date}  - A date object representing the starting time.
- * @param {date}  - A date object representing the ending time. 
+ * Checks if two dates constitute a 30-minute consecutive period or not.
+ * @param {date}  startTime - A date object representing the starting time.
+ * @param {date}  endTime - A date object representing the ending time.
  * @returns {Boolean} - Returns true if the dates are a consecutive 30-minutes periods and false otherwise.  */
 function is30MinutesPeriod(startTime, endTime) {
   const diffMilliseconds = endTime - startTime;
@@ -11,7 +11,7 @@ function is30MinutesPeriod(startTime, endTime) {
 
 /**
  * Checks if a group of timestamps are consecutive 90-minutes periods.
- * @param {string[]}  - An array of strings consisting of three entries, each one representing a timestamp in yyyy-mm-dd T hh:mm:ss format. (ISO 8601).
+ * @param {string[]} timestamps - An array of strings consisting of three entries, each one representing a timestamp in yyyy-mm-dd T hh:mm:ss format. (ISO 8601).
  * @returns {Boolean} - Returns true if the first timestamp starts a 90-minutes period and false otherwise.  */
 function startsConsecutive90Minutes(timestamps) {
   // Mapping all the timestamps in the array, converting each to a Date object, and deconstructing the result to individual consts.
@@ -50,6 +50,12 @@ function getConsecutive90MinutesPeriods(data) {
   return result;
 }
 
+/**
+ * Sorts an entries array in descending order.
+ * @param {array} entries - A 2D array consisting of timestamp/count pairs.
+ * eg.  [ [ '2016-12-01T05:00:00', 6 ], [ '2016-12-01T05:30:00', 9 ]]
+ * @returns {array} - Returns an 2d array in the same format than the input but sorted in descending order by count value.
+ */
 function sortDescending(entries) {
   // Sorting entries in descending order.
   const sortedEntries = entries.sort((a, b) => a[1] - b[1]);
