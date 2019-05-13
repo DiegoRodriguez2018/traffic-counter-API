@@ -2,10 +2,16 @@ const express = require('express');
 const DataManager = require('../utils/DataManager');
 const router = new express.Router();
 
-router.get('/test', (req, res) => {
+router.get('/', (req, res) => {
+  const { headers : {host}} = req;
   const data = {
     data: {
-      message: 'API is working'
+      endpoints: [
+        `${host}/total-cars`,
+        `${host}/cars-per-day`,
+        `${host}/top-half-hour-periods`,
+        `${host}/bottom-1.5hour-periods`
+      ]
     }
   };
   return res.send(data);
@@ -18,7 +24,7 @@ router.get('/total-cars', (req, res) => {
         data: {
           totalCount
         }
-      }
+      };
       res.send(data);
     })
     .catch(err => {
@@ -33,7 +39,7 @@ router.get('/cars-per-day', (req, res) => {
         data: {
           carsPerDay
         }
-      }
+      };
       res.send(data);
     })
     .catch(err => {
@@ -41,14 +47,14 @@ router.get('/cars-per-day', (req, res) => {
     });
 });
 
-router.get('/top-three-half-hour-periods', (req, res) => {
+router.get('/top-half-hour-periods', (req, res) => {
   DataManager.getTop3()
     .then(topThreeHalfHourPeriods => {
       const data = {
         data: {
           topThreeHalfHourPeriods
         }
-      }
+      };
       res.send(data);
     })
     .catch(err => {
@@ -56,6 +62,19 @@ router.get('/top-three-half-hour-periods', (req, res) => {
     });
 });
 
-// router.get("/1.5hour-periods-with-less-traffic",Handlers.getTest);
+router.get('/bottom-1.5hour-periods', (req, res) => {
+  DataManager.getBottom90MinPeriods()
+    .then(bottomHourAndAHalfPeriods => {
+      const data = {
+        data: {
+          bottomHourAndAHalfPeriods
+        }
+      };
+      res.send(data);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
 
 module.exports = router;

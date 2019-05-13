@@ -41,5 +41,17 @@ DataManager.prototype.getTop3 = function() {
   });
 };
 
+DataManager.prototype.getBottom90MinPeriods = function() {
+  return new Promise((resolve, reject) => {
+    const path = 'data/lines.txt';
+    utils.readFile(path).then(data => {
+      resolve(utils.getBottom90MinPeriods(data));
+    })
+    .catch(err=>{
+      reject(err);
+    });
+  });
+};
+
 // Returning an instance so is ready to use in Handler.js
 module.exports = new DataManager();

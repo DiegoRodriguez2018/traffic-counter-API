@@ -6,15 +6,15 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('Traffic Counter', () => {
-  describe('/test', () => {
-    it('should GET a response message', done => {
+  describe('/', () => {
+    it('should GET a response with endpoints property', done => {
       chai
         .request(server)
-        .get('/test')
+        .get('/')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
-          res.body.data.should.have.property('message').eql('API is working');
+          res.body.data.should.have.property('endpoints');
           done();
         });
     });
@@ -48,15 +48,29 @@ describe('Traffic Counter', () => {
     });
   });
 
-  describe('/top-three-half-hour-periods', () => {
+  describe('/top-half-hour-periods', () => {
     it('should GET a response with topThreeHalfHourPeriods property', done => {
       chai
         .request(server)
-        .get('/top-three-half-hour-periods')
+        .get('/top-half-hour-periods')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.data.should.have.property('topThreeHalfHourPeriods');
+          done();
+        });
+    });
+  });
+
+  describe('/bottom-1.5hour-periods', () => {
+    it('should GET a response with bottomHourAndAHalfPeriods property', done => {
+      chai
+        .request(server)
+        .get('/bottom-1.5hour-periods')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.data.should.have.property('bottomHourAndAHalfPeriods');
           done();
         });
     });
