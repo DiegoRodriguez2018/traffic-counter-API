@@ -1,25 +1,21 @@
 const assert = require('chai').assert;
 const utils = require('../utils/utils.js');
 
-describe('utils/readFile.js', function() {
-  describe('#Typeof result', function() {
+describe('utils', function() {
+  describe('readFile.js', function() {
     it('should return Object when a filePath is specified.', async function() {
       const path = './data/lines.txt';
       assert.equal(typeof (await utils.readFile(path)), 'object');
     });
-  });
 
-  describe('#Length of result', function() {
     it('should return the correct amount of entries', async function() {
       const path = './data/lines.txt';
       const entries = Object.entries(await utils.readFile(path));
       assert.equal(entries.length, 24);
     });
   });
-});
 
-describe('utils/getTotalCount.js', function() {
-  describe('#Total Count', function() {
+  describe('getTotalCount.js', function() {
     it('should return the correct total count of cars found in a data object', function() {
       const data = {
         '2016-12-01T05:00:00': 5,
@@ -31,10 +27,8 @@ describe('utils/getTotalCount.js', function() {
       assert.equal(utils.getTotalCount(data), 140);
     });
   });
-});
 
-describe('utils/getCountPerDay.js', function() {
-  describe('#Count Per Day', function() {
+  describe('getCountPerDay.js', function() {
     it('should return the correct total count of cars found in a data object', function() {
       const data = {
         '2016-12-01T05:00:00': 1,
@@ -61,10 +55,8 @@ describe('utils/getCountPerDay.js', function() {
       assert.deepEqual(utils.getCountPerDay(data), expectedOutput);
     });
   });
-});
 
-describe('utils/getTopHalfHourPeriods.js', function() {
-  describe('#Top three half hours with most cars', function() {
+  describe('getTopHalfHourPeriods.js', function() {
     it('should return a list containing the top 3 half hours with most cars.', function() {
       const data = {
         '2016-12-01T05:00:00': 1,
@@ -90,10 +82,8 @@ describe('utils/getTopHalfHourPeriods.js', function() {
       assert.deepEqual(utils.getTopHalfHourPeriods(data), expectedOutput);
     });
   });
-});
 
-describe('utils/getBottomHourAndAHalfPeriods.js', function() {
-  describe('#Bottom hour and a half periods (periods with less traffic).', function() {
+  describe('getBottomHourAndAHalfPeriods.js', function() {
     it('should return a list containing the bottom hour and a half periods.', function() {
       const data = {
         '2016-12-01T05:00:00': 2,
@@ -106,7 +96,7 @@ describe('utils/getBottomHourAndAHalfPeriods.js', function() {
 
         '2016-12-01T15:00:00': 1,
         '2016-12-01T15:30:00': 0,
-      
+
         '2016-12-01T23:30:00': 0,
 
         '2016-12-05T09:30:00': 8,
@@ -115,12 +105,15 @@ describe('utils/getBottomHourAndAHalfPeriods.js', function() {
         '2016-12-05T12:30:00': 6,
         '2016-12-05T13:30:00': 9,
         '2016-12-05T14:30:00': 2,
-        '2016-12-05T15:30:00': 5,
+        '2016-12-05T15:30:00': 5
       };
 
-      const expectedOutput = ['2016-12-01T05:00:00 6',  '2016-12-01T07:00:00 6'];
+      const expectedOutput = ['2016-12-01T05:00:00 6', '2016-12-01T07:00:00 6'];
 
-      assert.deepEqual(utils.getBottomHourAndAHalfPeriods(data), expectedOutput);
+      assert.deepEqual(
+        utils.getBottomHourAndAHalfPeriods(data),
+        expectedOutput
+      );
     });
   });
 });
