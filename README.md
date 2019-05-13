@@ -15,22 +15,23 @@ As described on the [specifications](./Specifications.md), the main objective of
 * NPM = v6.8.0
 
 ### Clone
-On the command line navigate to the folder where you would like to save the repository and run: 
+On the command line navigate to the folder where you would like to save the repository and run:
+
 `git clone https://github.com/DiegoRodriguez2018/traffic-counter-API.git` 
 
 If you prefer SSH run: 
+
 `git clone https://github.com/DiegoRodriguez2018/traffic-counter-API.git` 
 
 ### Installation
 In the folder where you cloned the repository run:
 `cd traffic-counter-API/`
 
-And then install all the required npm packages with. 
+And then install all the required npm packages with:
 `npm install`
 
 ### Quick start
-After all the dependencies have been installed you can start the express server with. 
-`npm start`   
+After all the dependencies have been installed you can start the express server with: `npm start`   
 
 If everything is ok you will se an output like this:
 
@@ -57,7 +58,7 @@ The API endpoints structure can be described as follows:
 As is shown above, this project consists of two core APIs:
 
 1. **API-1** which returns the results of the calculations in separate endpoints, and 
-2. **API-2** which returns **all** the results of the calculations in one endpoint. 
+2. **API-2** which returns all the results of the calculations in one endpoint. 
 
 ## Endpoints Documentation
 #### GET /
@@ -165,7 +166,7 @@ Returns all the properties mentioned above, in addition to dataSource and calcul
 ```
 
 # Developer's Guide
-If you would like to contribute to this project the following section will be useful.
+If you would like to contribute to this project the following section could be useful.
 
 ### Quick start
 Nodemon is an useful development tool that watches for changes in the project and restarts the server if something changes. 
