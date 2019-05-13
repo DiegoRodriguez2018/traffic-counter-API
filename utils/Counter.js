@@ -1,5 +1,8 @@
 const utils = require('./utils');
-
+/**
+ * Counter reads and extracts data from the file specified in path, and implements all the utils methods in its prototype. 
+ * @param {string} path - The path of the file where the records are stored.
+*/
 // Note that the default path is "data/lines.txt", but Counter also allows custom paths to be passed.
 const Counter = function(path = 'data/lines.txt') {
   this.path = path;

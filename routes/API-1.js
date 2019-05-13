@@ -1,6 +1,7 @@
 const express = require('express');
 const Counter = require('../utils/Counter');
-const TrafficCounter = new Counter();
+const TrafficCounter = new Counter(); // The default path is "data/lines.txt", but Counter also allows custom paths to be passed.
+ 
 const router = new express.Router();
 
 router.get('/', (req, res) => {
