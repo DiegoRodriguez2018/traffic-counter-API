@@ -9,17 +9,39 @@ As described on the [specifications](./Specifications.md), the main objective of
 2. The data is recorded in chronological order. 
 3. Missing entries in the record are not going to be considered as part of a  consecutive 1.5 hour period, as is impossible to assure that the car count for that particular entry was 0. 
 
-
 ## User's Guide
 ### Dependencies
 * NodeJS = v8.10.0
 * NPM = v6.8.0
 
+### Clone
+On the command line navigate to the folder where you would like to save the repository and run: 
+`git clone https://github.com/DiegoRodriguez2018/traffic-counter-API.git` 
+
+If you prefer SSH run: 
+`git clone https://github.com/DiegoRodriguez2018/traffic-counter-API.git` 
+
 ### Installation
+In the folder where you cloned the repository run:
+`cd traffic-counter-API/`
+
+And then install all the required npm packages with. 
 `npm install`
 
 ### Quick start
-`npm start` to start express server, with /index.js as an entry point.  
+After all the dependencies have been installed you can start the express server with. 
+`npm start`   
+
+If everything is ok you will se an output like this:
+
+```
+> traffic-counter-api@1.0.0 start path/traffic-counter-API
+> node index.js
+
+listening on 8080
+```
+
+The API is ready to use now. You can quickly check the endpoints by opening http://localhost:8080 in your web browser. 
 
 ### API Design
 The API endpoints structure can be described as follows:
@@ -146,18 +168,21 @@ Returns all the properties mentioned above, in addition to dataSource and calcul
 If you would like to contribute to this project the following section will be useful.
 
 ### Quick start
-`npm run dev` starts express server with nodemon, tracking files and restarting the server if there is any changes.  
+Nodemon is an useful development tool that watches for changes in the project and restarts the server if something changes. 
 
-### Testing JS
-During the development process Test Driven Development (TDD) techniques were implemented as much as possible.Tests were written before functionalities, and used as a base to develop and refactor core components.
+To start the server with nodemon, in the root path of the project execute
+`npm run dev`  
 
+### Testing
 * Test Framework: Mocha v6.1.4
 * Assertion Library: Chai v4.2.0
 * Test Coverage: Istanbul (nyc v14.1.1)
 
-To run tests execute `npm test`.
+During the development process Test Driven Development (TDD) techniques were implemented as much as possible. Tests were written before functionalities, and used as a guide to develop and refactor core components.
 
-If you are going to modify or add functionalities to this project remember to double check if the tests are being passed and test coverage reports. 
+To run test scripts, in the root path of the project execute `npm test`.
+
+If you are going to modify or add functionalities to the API remember to run the tests and check the coverage reports. 
 
 ### JSON Style Guide
 For this project the [Google JSON Style Guide](https://google.github.io/styleguide/jsoncstyleguide.xml) 
