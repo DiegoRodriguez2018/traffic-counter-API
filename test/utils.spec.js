@@ -63,8 +63,8 @@ describe('utils/getCountPerDay.js', function() {
   });
 });
 
-describe('utils/getTop3.js', function() {
-  describe('#Top 3 half hours with most cars', function() {
+describe('utils/getTopHalfHourPeriods.js', function() {
+  describe('#Top three half hours with most cars', function() {
     it('should return a list containing the top 3 half hours with most cars.', function() {
       const data = {
         '2016-12-01T05:00:00': 1,
@@ -87,14 +87,14 @@ describe('utils/getTop3.js', function() {
         '2016-12-01T15:30:00 10'
       ];
 
-      assert.deepEqual(utils.getTop3(data), expectedOutput);
+      assert.deepEqual(utils.getTopHalfHourPeriods(data), expectedOutput);
     });
   });
 });
 
-describe('utils/getBottom90MinPeriods.js', function() {
-  describe('#Bottom 90 minutes periods (less traffic).', function() {
-    it('should return a list containing the bottom 90 minutes periods.', function() {
+describe('utils/getBottomHourAndAHalfPeriods.js', function() {
+  describe('#Bottom hour and a half periods (periods with less traffic).', function() {
+    it('should return a list containing the bottom hour and a half periods.', function() {
       const data = {
         '2016-12-01T05:00:00': 2,
         '2016-12-01T05:30:00': 1,
@@ -120,7 +120,7 @@ describe('utils/getBottom90MinPeriods.js', function() {
 
       const expectedOutput = ['2016-12-01T05:00:00 6',  '2016-12-01T07:00:00 6'];
 
-      assert.deepEqual(utils.getBottom90MinPeriods(data), expectedOutput);
+      assert.deepEqual(utils.getBottomHourAndAHalfPeriods(data), expectedOutput);
     });
   });
 });

@@ -31,12 +31,12 @@ Counter.prototype.getCountPerDay = function() {
   });
 };
 
-Counter.prototype.getTop3 = function() {
+Counter.prototype.getTopHalfHourPeriods = function() {
   return new Promise((resolve, reject) => {
     utils
       .readFile(this.path)
       .then(data => {
-        resolve(utils.getTop3(data));
+        resolve(utils.getTopHalfHourPeriods(data));
       })
       .catch(err => {
         reject(err);
@@ -44,12 +44,40 @@ Counter.prototype.getTop3 = function() {
   });
 };
 
-Counter.prototype.getBottom90MinPeriods = function() {
+Counter.prototype.getBottomHourAndAHalfPeriods = function() {
   return new Promise((resolve, reject) => {
     utils
       .readFile(this.path)
       .then(data => {
-        resolve(utils.getBottom90MinPeriods(data));
+        resolve(utils.getBottomHourAndAHalfPeriods(data));
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};
+
+Counter.prototype.getAllData = function() {
+  return new Promise((resolve, reject) => {
+    utils
+      .readFile(this.path)
+      .then(data => {
+        const totalCount = utils.getTotalCount(data);
+        const countPerDay = utils.getCountPerDay(data);
+        const topHalfHourPeriods = utils.getTopHalfHourPeriods(data);
+        const bottomHourAndAHalfPeriods = utils.getBottomHourAndAHalfPeriods(data);
+        const dataSource = this.path.split('/')[1];
+        const calculatedAt = new Date();
+
+        const result = {
+          dataSource,
+          totalCount,
+          countPerDay,
+          topHalfHourPeriods,
+          bottomHourAndAHalfPeriods,
+          calculatedAt
+        };
+        resolve(result);
       })
       .catch(err => {
         reject(err);

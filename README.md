@@ -31,11 +31,12 @@ During the development process Test Driven Development (TDD) techniques were imp
 
 * Test Framework: Mocha v6.1.4
 * Assertion Library: Chai v4.2.0
+* Test Coverage: Istanbul (nyc v14.1.1)
 
 To run tests:
 `npm test`
 
-If you are going to modify or add functionalities to this project remember to run `npm test` to double check they are still being passed. 
+If you are going to modify or add functionalities to this project remember to run `npm test` to double check tests are being passed and the test coverage reports. 
 
 ### JSON Style Guide
 For this project the [Google JSON Style Guide](https://google.github.io/styleguide/jsoncstyleguide.xml) 

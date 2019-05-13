@@ -8,17 +8,17 @@ router.get('/', (req, res) => {
   const data = {
     data: {
       endpoints: [
-        `${host}/total-cars`,
-        `${host}/cars-per-day`,
+        `${host}/total-count`,
+        `${host}/count-per-day`,
         `${host}/top-half-hour-periods`,
-        `${host}/bottom-1.5hour-periods`
+        `${host}/bottom-hour-and-a-half-periods`
       ]
     }
   };
   return res.send(data);
 });
 
-router.get('/total-cars', (req, res) => {
+router.get('/total-count', (req, res) => {
   TrafficCounter.getTotalCount()
     .then(totalCount => {
       const data = {
@@ -33,12 +33,12 @@ router.get('/total-cars', (req, res) => {
     });
 });
 
-router.get('/cars-per-day', (req, res) => {
+router.get('/count-per-day', (req, res) => {
   TrafficCounter.getCountPerDay()
-    .then(carsPerDay => {
+    .then(countPerDay => {
       const data = {
         data: {
-          carsPerDay
+          countPerDay
         }
       };
       res.send(data);
@@ -49,7 +49,7 @@ router.get('/cars-per-day', (req, res) => {
 });
 
 router.get('/top-half-hour-periods', (req, res) => {
-  TrafficCounter.getTop3()
+  TrafficCounter.getTopHalfHourPeriods()
     .then(topThreeHalfHourPeriods => {
       const data = {
         data: {
@@ -63,13 +63,27 @@ router.get('/top-half-hour-periods', (req, res) => {
     });
 });
 
-router.get('/bottom-1.5hour-periods', (req, res) => {
-  TrafficCounter.getBottom90MinPeriods()
+router.get('/bottom-hour-and-a-half-periods', (req, res) => {
+  TrafficCounter.getBottomHourAndAHalfPeriods()
     .then(bottomHourAndAHalfPeriods => {
       const data = {
         data: {
           bottomHourAndAHalfPeriods
         }
+      };
+      res.send(data);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+router.get('/get-all', (req, res) => {
+  TrafficCounter.getAllData()
+    .then(result => {
+      // Spreading the result and storing the properties inside the data object:
+      const data = {
+        data: {...result}
       };
       res.send(data);
     })

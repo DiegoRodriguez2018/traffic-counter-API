@@ -66,7 +66,7 @@ function sortDescending(entries) {
  * Return the 90 minutes period with least cars recorded, based on the data object.
  * @param {Object} data - An object with the record timestamp as key and car count as value.
  * @returns {Array} Returns an Array with the 90 minutes period (or periods) with the least cars recorded.  */
-function getBottom90MinPeriods(data) {
+function getBottomHourAndAHalfPeriods(data) {
   const consecutivePeriods = getConsecutive90MinutesPeriods(data);
   const sorted = sortDescending(consecutivePeriods);
   const result = [];
@@ -88,4 +88,4 @@ function getBottom90MinPeriods(data) {
   return formattedResult;
 }
 
-module.exports = getBottom90MinPeriods;
+module.exports = getBottomHourAndAHalfPeriods;
