@@ -6,7 +6,7 @@ const fs = require('fs');
  * @returns {Object} Returns a formatted object with a nested data array with all the timestamp/count pairs found in the .txt file.
  */
 
-async function readFile(filePath) {
+function readFile(filePath) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', function(err, data) {
       if (data){
