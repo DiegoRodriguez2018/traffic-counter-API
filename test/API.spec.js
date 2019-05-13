@@ -20,11 +20,11 @@ describe('Traffic Counter', () => {
     });
   });
 
-  describe('/total-cars', () => {
+  describe('/total-count', () => {
     it('should GET a response with total count property', done => {
       chai
         .request(server)
-        .get('/total-cars')
+        .get('/total-count')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
@@ -34,15 +34,15 @@ describe('Traffic Counter', () => {
     });
   });
 
-  describe('/cars-per-day', () => {
+  describe('/count-per-day', () => {
     it('should GET a response with carsPerDay property', done => {
       chai
         .request(server)
-        .get('/cars-per-day')
+        .get('/count-per-day')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
-          res.body.data.should.have.property('carsPerDay');
+          res.body.data.should.have.property('countPerDay');
           done();
         });
     });
@@ -62,11 +62,11 @@ describe('Traffic Counter', () => {
     });
   });
 
-  describe('/bottom-1.5hour-periods', () => {
+  describe('/bottom-hour-and-a-half-periods', () => {
     it('should GET a response with bottomHourAndAHalfPeriods property', done => {
       chai
         .request(server)
-        .get('/bottom-1.5hour-periods')
+        .get('/bottom-hour-and-a-half-periods')
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');

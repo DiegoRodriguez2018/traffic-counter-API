@@ -8,17 +8,17 @@ router.get('/', (req, res) => {
   const data = {
     data: {
       endpoints: [
-        `${host}/total-cars`,
-        `${host}/cars-per-day`,
+        `${host}/total-count`,
+        `${host}/count-per-day`,
         `${host}/top-half-hour-periods`,
-        `${host}/bottom-1.5hour-periods`
+        `${host}/bottom-hour-and-a-half-periods`
       ]
     }
   };
   return res.send(data);
 });
 
-router.get('/total-cars', (req, res) => {
+router.get('/total-count', (req, res) => {
   TrafficCounter.getTotalCount()
     .then(totalCount => {
       const data = {
@@ -33,12 +33,12 @@ router.get('/total-cars', (req, res) => {
     });
 });
 
-router.get('/cars-per-day', (req, res) => {
+router.get('/count-per-day', (req, res) => {
   TrafficCounter.getCountPerDay()
-    .then(carsPerDay => {
+    .then(countPerDay => {
       const data = {
         data: {
-          carsPerDay
+          countPerDay
         }
       };
       res.send(data);
@@ -63,7 +63,7 @@ router.get('/top-half-hour-periods', (req, res) => {
     });
 });
 
-router.get('/bottom-1.5hour-periods', (req, res) => {
+router.get('/bottom-hour-and-a-half-periods', (req, res) => {
   TrafficCounter.getBottom90MinPeriods()
     .then(bottomHourAndAHalfPeriods => {
       const data = {
