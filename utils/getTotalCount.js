@@ -5,7 +5,7 @@
 
 function getTotalCount(data){
   const values = Object.values(data);
-  return values.reduce((accumulator, current)=> accumulator + current);
+  return values.reduce((accumulator, current)=> accumulator + current).toString();
 }
 
 module.exports = getTotalCount;

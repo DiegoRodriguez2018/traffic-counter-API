@@ -1,95 +1,25 @@
 const express = require('express');
-const Counter = require('../utils/Counter');
-const TrafficCounter = new Counter();
 const router = new express.Router();
 
 router.get('/', (req, res) => {
-  const { headers : {host}} = req;
+  // Extracting host from the request.
+  let {
+    headers: { host }
+  } = req;
+  // Checking is host is localhost and adding 'http://' if true. By doing this the API can be easily navigated with a modern browser.
+  if (host.substring(0, 9) === 'localhost') {
+    host = `http://${host}`;
+  }
+
   const data = {
     data: {
-      endpoints: [
-        `${host}/total-count`,
-        `${host}/count-per-day`,
-        `${host}/top-half-hour-periods`,
-        `${host}/bottom-hour-and-a-half-periods`
-      ]
+      APIs: [`${host}/API-1`, `${host}/API-2`]
     }
   };
-  return res.send(data);
+  res.send(data);
 });
 
-router.get('/total-count', (req, res) => {
-  TrafficCounter.getTotalCount()
-    .then(totalCount => {
-      const data = {
-        data: {
-          totalCount
-        }
-      };
-      res.send(data);
-    })
-    .catch(err => {
-      res.send(err);
-    });
-});
-
-router.get('/count-per-day', (req, res) => {
-  TrafficCounter.getCountPerDay()
-    .then(countPerDay => {
-      const data = {
-        data: {
-          countPerDay
-        }
-      };
-      res.send(data);
-    })
-    .catch(err => {
-      res.send(err);
-    });
-});
-
-router.get('/top-half-hour-periods', (req, res) => {
-  TrafficCounter.getTopHalfHourPeriods()
-    .then(topThreeHalfHourPeriods => {
-      const data = {
-        data: {
-          topThreeHalfHourPeriods
-        }
-      };
-      res.send(data);
-    })
-    .catch(err => {
-      res.send(err);
-    });
-});
-
-router.get('/bottom-hour-and-a-half-periods', (req, res) => {
-  TrafficCounter.getBottomHourAndAHalfPeriods()
-    .then(bottomHourAndAHalfPeriods => {
-      const data = {
-        data: {
-          bottomHourAndAHalfPeriods
-        }
-      };
-      res.send(data);
-    })
-    .catch(err => {
-      res.send(err);
-    });
-});
-
-router.get('/get-all', (req, res) => {
-  TrafficCounter.getAllData()
-    .then(result => {
-      // Spreading the result and storing the properties inside the data object:
-      const data = {
-        data: {...result}
-      };
-      res.send(data);
-    })
-    .catch(err => {
-      res.send(err);
-    });
-});
+router.use('/API-1', require('./API-1'));
+router.use('/API-2/', require('./API-2'));
 
 module.exports = router;
