@@ -34,8 +34,8 @@ The API endpoints structure can be described as follows:
 ```
 As is shown above, this project consists of two core APIs:
 
-1. **API-1** which returns the result of the calculations in separate endpoints, and 
-2. **API-2** which returns the results of the calculations in one endpoint. 
+1. **API-1** which returns the results of the calculations in separate endpoints, and 
+2. **API-2** which returns **all** the results of the calculations in one endpoint. 
 
 ## Endpoints Documentation
 #### GET /
@@ -52,7 +52,6 @@ Returns APIs property with links to the available APIs.
 ```
 
 ### API-1
-API-1 returns traffic counter calculations in separate endpoints. 
 #### GET /API-1
 Returns endpoints property with links to the available endpoints in API-1.
 ```JSON
@@ -77,7 +76,7 @@ Returns totalCount property, which refers to the total car count found in the in
 }
 ```
 #### GET /API-1/count-per-day
-Returns countPerDay property, which refers to a sequence of lines where each line contains a date and total car count on that day. 
+Returns countPerDay property, which refers to a sequence of lines where each line contains a date and total car count on that particular day. 
 ```JSON
 {
   "data": {
@@ -92,7 +91,7 @@ Returns countPerDay property, which refers to a sequence of lines where each lin
 ```
 
 #### GET /API-1/top-half-hour-periods
-Returns topThreeHalfHourPeriods property, which refers to a sequence of lines where each line represents one of the top three half and hour periods on record. In other words, the periods with more traffic recorded in the input file.  
+Returns topThreeHalfHourPeriods property, which refers to a sequence of lines where each line represents one of the top three half and hour periods on record. In other words, the top three periods with more traffic recorded in the input file.  
 ```JSON
 {
   "data": {
@@ -105,7 +104,7 @@ Returns topThreeHalfHourPeriods property, which refers to a sequence of lines wh
 }
 ```
 #### GET /API-1/bottom-hour-and-a-half-periods
-Returns bottomHourAndAHalfPeriods property, which refers to a sequence of lines where each line represents the bottom hour and a half periods on record. In other words, the 1.5 hour periods with less traffic recorded in the input file. 
+Returns bottomHourAndAHalfPeriods property, which refers to a sequence of lines where each line represents the bottom hour and a half periods on record. In other words, the bottom 1.5 hour periods with less traffic recorded in the input file. 
 ```JSON
 {
   "data": {
@@ -117,7 +116,6 @@ Returns bottomHourAndAHalfPeriods property, which refers to a sequence of lines 
 ```
 
 ### API-2
-API-2 returns all the traffic counter calculations in on endpoint. 
 #### GET /API-2
 Returns all the properties mentioned above, in addition to dataSource and calculatedAt properties.
 ```JSON
@@ -157,10 +155,9 @@ During the development process Test Driven Development (TDD) techniques were imp
 * Assertion Library: Chai v4.2.0
 * Test Coverage: Istanbul (nyc v14.1.1)
 
-To run tests:
-`npm test`
+To run tests execute `npm test`.
 
-If you are going to modify or add functionalities to this project remember to run `npm test` to double check tests are being passed and the test coverage reports. 
+If you are going to modify or add functionalities to this project remember to double check if the tests are being passed and test coverage reports. 
 
 ### JSON Style Guide
 For this project the [Google JSON Style Guide](https://google.github.io/styleguide/jsoncstyleguide.xml) 
@@ -186,6 +183,6 @@ On the other hand, an Error response only returns an error object, eg.
 }
 ```
 
-This style guide also recommends the following when naming JSON properties:
+The Google JSON Style Guide also recommends the following when naming convention for JSON properties:
 1. Property names must be camelCased, ASCII strings.
 2. The first character must be a letter, an underscore (_) or a dollar sign ($).
