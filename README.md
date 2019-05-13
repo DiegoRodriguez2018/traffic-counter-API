@@ -5,8 +5,9 @@ As described on the [specifications](./Specifications.md), the main objective of
 As required in the specifications, this project will consist of two REST APIs. The first one will output the result of the previous calculations in separate endpoints, and the second one will output all the results in one endpoint. 
 
 ### Assumptions 
-* We can assume clean input as the data is machine-generated. 
-* The data is recorded in chronological order. 
+1. We can assume clean input as the data is machine-generated. 
+2. The data is recorded in chronological order. 
+3. In case of a missing entry we are not going to consider it as part of a consecutive 1.5 hour period, as it is impossible to assure that the reading for that half and hour was 0.
 
 ### Dependencies
 * NodeJS = v8.10.0
@@ -59,3 +60,7 @@ On the other hand, an Error response only returns an error object, eg.
   }
 }
 ```
+
+This style guide also recommends the following when naming JSON properties:
+1. Property names must be camelCased, ASCII strings.
+2. The first character must be a letter, an underscore (_) or a dollar sign ($).

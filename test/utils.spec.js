@@ -92,9 +92,9 @@ describe('utils/getTop3.js', function() {
   });
 });
 
-describe('utils/getTop3.js', function() {
-  describe('#Top 3 half hours with most cars', function() {
-    it('should return a list containing the top 3 half hours with most cars.', function() {
+describe('utils/getBottom90MinPeriods.js', function() {
+  describe('#Bottom 90 minutes periods (less traffic).', function() {
+    it('should return a list containing the bottom 90 minutes periods.', function() {
       const data = {
         '2016-12-01T05:00:00': 2,
         '2016-12-01T05:30:00': 1,
@@ -120,7 +120,7 @@ describe('utils/getTop3.js', function() {
 
       const expectedOutput = ['2016-12-01T05:00:00 6',  '2016-12-01T07:00:00 6'];
 
-      assert.deepEqual(utils.get90MinutesWithLessRecords(data), expectedOutput);
+      assert.deepEqual(utils.getBottom90MinPeriods(data), expectedOutput);
     });
   });
 });
