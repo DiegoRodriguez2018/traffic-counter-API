@@ -49,7 +49,7 @@ router.get('/count-per-day', (req, res) => {
 });
 
 router.get('/top-half-hour-periods', (req, res) => {
-  TrafficCounter.getTop3()
+  TrafficCounter.getTopHalfHourPeriods()
     .then(topThreeHalfHourPeriods => {
       const data = {
         data: {
@@ -64,7 +64,7 @@ router.get('/top-half-hour-periods', (req, res) => {
 });
 
 router.get('/bottom-hour-and-a-half-periods', (req, res) => {
-  TrafficCounter.getBottom90MinPeriods()
+  TrafficCounter.getBottomHourAndAHalfPeriods()
     .then(bottomHourAndAHalfPeriods => {
       const data = {
         data: {
