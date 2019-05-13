@@ -1,4 +1,6 @@
 ## Traffic Counter API
+Live Version: https://ledgerium-traffic-counter.herokuapp.com/
+
 ### Description
 As described on the [specifications](./Specifications.md), the main objective of this project is to create a REST API that handles the data recorded by an automated traffic counter. The data will be originally stored in a .txt file. The program will read this file, extract the information required and perform a series of calculations. 
 
