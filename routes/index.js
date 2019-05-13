@@ -78,4 +78,18 @@ router.get('/bottom-1.5hour-periods', (req, res) => {
     });
 });
 
+router.get('/get-all', (req, res) => {
+  TrafficCounter.getAllData()
+    .then(result => {
+      // Spreading the result and storing the properties inside the data object:
+      const data = {
+        data: {...result}
+      };
+      res.send(data);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
 module.exports = router;
