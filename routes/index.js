@@ -1,5 +1,6 @@
 const express = require('express');
-const DataManager = require('../utils/DataManager');
+const Counter = require('../utils/Counter');
+const TrafficCounter = new Counter();
 const router = new express.Router();
 
 router.get('/', (req, res) => {
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/total-cars', (req, res) => {
-  DataManager.getTotalCount()
+  TrafficCounter.getTotalCount()
     .then(totalCount => {
       const data = {
         data: {
@@ -33,7 +34,7 @@ router.get('/total-cars', (req, res) => {
 });
 
 router.get('/cars-per-day', (req, res) => {
-  DataManager.getCountPerDay()
+  TrafficCounter.getCountPerDay()
     .then(carsPerDay => {
       const data = {
         data: {
@@ -48,7 +49,7 @@ router.get('/cars-per-day', (req, res) => {
 });
 
 router.get('/top-half-hour-periods', (req, res) => {
-  DataManager.getTop3()
+  TrafficCounter.getTop3()
     .then(topThreeHalfHourPeriods => {
       const data = {
         data: {
@@ -63,7 +64,7 @@ router.get('/top-half-hour-periods', (req, res) => {
 });
 
 router.get('/bottom-1.5hour-periods', (req, res) => {
-  DataManager.getBottom90MinPeriods()
+  TrafficCounter.getBottom90MinPeriods()
     .then(bottomHourAndAHalfPeriods => {
       const data = {
         data: {
