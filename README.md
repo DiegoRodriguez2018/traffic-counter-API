@@ -2,27 +2,149 @@
 Live Version: https://ledgerium-traffic-counter.herokuapp.com/
 
 ### Description
-As described on the [specifications](./Specifications.md), the main objective of this project is to create a REST API that handles the data recorded by an automated traffic counter. The data will be originally stored in a .txt file. The program will read this file, extract the information required and perform a series of calculations. 
-
-As required in the specifications, this project will consist of two REST APIs. The first one will output the result of the previous calculations in separate endpoints, and the second one will output all the results in one endpoint. 
+As described on the [specifications](./Specifications.md), the main objective of this project is to create a REST API that handles the data recorded by an automated traffic counter.The API controller will retrieve the data from a .txt file, perform a series of calculations and expose the results in the corresponding endpoints. 
 
 ### Assumptions 
 1. We can assume clean input as the data is machine-generated. 
 2. The data is recorded in chronological order. 
-3. In case of a missing entry we are not going to consider it as part of a consecutive 1.5 hour period, as it is impossible to assure that the reading for that half and hour was 0.
+3. Missing entries in the record are not going to be considered as part of a  consecutive 1.5 hour period, as is impossible to assure that the car count for that particular entry was 0. 
 
+
+## User's Guide
 ### Dependencies
 * NodeJS = v8.10.0
 * NPM = v6.8.0
 
-## How to use
 ### Installation
 `npm install`
 
 ### Quick start
 `npm start` to start express server, with /index.js as an entry point.  
 
-## Development
+### API Design
+The API endpoints structure can be described as follows:
+```
+/
+  /API-1
+    /API-1/total-count
+    /API-1/count-per-day
+    /API-1/top-half-hour-periods
+    /API-1/bottom-hour-and-a-half-periods
+  /API-2
+```
+As is shown above, this project consists of two core APIs:
+
+1. **API-1** which returns the result of the calculations in separate endpoints, and 
+2. **API-2** which returns the results of the calculations in one endpoint. 
+
+## Endpoints Documentation
+#### GET /
+Returns APIs property with links to the available APIs.  
+```JSON
+{
+  "data": {
+    "APIs": [
+      "http://localhost:8080/API-1",
+      "http://localhost:8080/API-2"
+    ]
+  }
+}
+```
+
+### API-1
+API-1 returns traffic counter calculations in separate endpoints. 
+#### GET /API-1
+Returns endpoints property with links to the available endpoints in API-1.
+```JSON
+{
+  "data": {
+    "endpoints": [
+      "http://localhost:8080/API-1/total-count",
+      "http://localhost:8080/API-1/count-per-day",
+      "http://localhost:8080/API-1/top-half-hour-periods",
+      "http://localhost:8080/API-1/bottom-hour-and-a-half-periods"
+    ]
+  }
+}
+```
+#### GET /API-1/total-count
+Returns totalCount property, which refers to the total car count found in the input file. 
+```JSON
+{
+  "data": {
+    "totalCount": "398"
+  }
+}
+```
+#### GET /API-1/count-per-day
+Returns countPerDay property, which refers to a sequence of lines where each line contains a date and total car count on that day. 
+```JSON
+{
+  "data": {
+    "countPerDay": [
+      "2016-12-01 179",
+      "2016-12-05 81",
+      "2016-12-08 134",
+      "2016-12-09 4"
+    ]
+  }
+}
+```
+
+#### GET /API-1/top-half-hour-periods
+Returns topThreeHalfHourPeriods property, which refers to a sequence of lines where each line represents one of the top three half and hour periods on record. In other words, the periods with more traffic recorded in the input file.  
+```JSON
+{
+  "data": {
+    "topThreeHalfHourPeriods": [
+      "2016-12-01T07:30:00 46",
+      "2016-12-01T08:00:00 42",
+      "2016-12-08T18:00:00 33"
+    ]
+  }
+}
+```
+#### GET /API-1/bottom-hour-and-a-half-periods
+Returns bottomHourAndAHalfPeriods property, which refers to a sequence of lines where each line represents the bottom hour and a half periods on record. In other words, the 1.5 hour periods with less traffic recorded in the input file. 
+```JSON
+{
+  "data": {
+    "bottomHourAndAHalfPeriods": [
+      "2016-12-01T05:00:00 31"
+    ]
+  }
+}
+```
+
+### API-2
+API-2 returns all the traffic counter calculations in on endpoint. 
+#### GET /API-2
+Returns all the properties mentioned above, in addition to dataSource and calculatedAt properties.
+```JSON
+{
+  "data": {
+    "totalCount": "398",
+    "countPerDay": [
+      "2016-12-01 179",
+      "2016-12-05 81",
+      "2016-12-08 134",
+      "2016-12-09 4"
+    ],
+    "topHalfHourPeriods": [
+      "2016-12-01T07:30:00 46",
+      "2016-12-01T08:00:00 42",
+      "2016-12-08T18:00:00 33"
+    ],
+    "bottomHourAndAHalfPeriods": [
+      "2016-12-01T05:00:00 31"
+    ],
+    "dataSource": "lines.txt",
+    "calculatedAt": "2019-05-13T05:57:45.756Z"
+  }
+}
+```
+
+# Developer's Guide
 If you would like to contribute to this project the following section will be useful.
 
 ### Quick start

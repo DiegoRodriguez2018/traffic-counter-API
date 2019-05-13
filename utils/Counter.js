@@ -70,11 +70,11 @@ Counter.prototype.getAllData = function() {
         const calculatedAt = new Date();
 
         const result = {
-          dataSource,
           totalCount,
           countPerDay,
           topHalfHourPeriods,
           bottomHourAndAHalfPeriods,
+          dataSource,
           calculatedAt
         };
         resolve(result);
