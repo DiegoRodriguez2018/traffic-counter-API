@@ -6,13 +6,12 @@ router.get('/', (req, res) => {
   let {
     headers: { host }
   } = req;
-  // Adding "http://" if is localhost, or "https://" otherwise (production). By adding this the API can be easily navigated with a modern web browser.
+  // Adding "http://" if is localhost, or "https://" otherwise (production). 
   if (host.substring(0, 9) === 'localhost') {
     host = `http://${host}`;
   } else {
     host = `https://${host}`;
   }
-
   const data = {
     data: {
       APIs: [`${host}/API-1`, `${host}/API-2`]
